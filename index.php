@@ -26,6 +26,18 @@
 		</tbody>
 	</table>
 
+	<form action="function.php" method="post">
+		<label for="new_task">Ajouter une nouvelle tâche</label>
+		<input type="text" name="new_task" id="new_task">
+		<button type="submit">Ajouter</button>
+	</form>
+
+	<?php
+
+
+
+
+	?>
 </body>
 
 </html>
