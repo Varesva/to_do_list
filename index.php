@@ -32,12 +32,7 @@
 		<button type="submit">Ajouter</button>
 	</form>
 
-	<?php
 
-
-
-
-	?>
 </body>
 
 </html>
