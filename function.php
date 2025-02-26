@@ -1,7 +1,9 @@
 <?php
+// require_once 'database.php';
 
-$new_task = filter_input(INPUT_POST, 'new_task', FILTER_SANITIZE_SPECIAL_CHARS);
-$new_status = $_POST['task_status'];
-$date = new DateTime();
-$date = $date->format('d/m/Y H:i:s');
-$priority = $_POST['task_priority'];
+function addTask($database)
+{
+	$task_content = filter_input(INPUT_POST, 'task_content', FILTER_SANITIZE_SPECIAL_CHARS);
+	$task_status = $_POST['task_status'];
+	$task_priority = $_POST['task_priority'];
+};

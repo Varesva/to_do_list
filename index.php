@@ -1,3 +1,7 @@
+<?php
+// require_once 'function.php';
+require_once 'database.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,39 +13,21 @@
 </head>
 
 <body>
-	<table>
-		<thead>
-			<tr>
-				<th scope="col" id="col_todo">À faire</th>
-				<th scope="col" id="col_doing">En cours</th>
-				<th scope="col" id="col_done">Terminé</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td id="row_todo"></td>
-				<td id="row_doing"></td>
-				<td id="row_done"></td>
-			</tr>
-		</tbody>
-	</table>
+	<main id="main">
+		<form action="function.php" method="post">
+			<label for="task_content">Ajouter une nouvelle tâche</label>
+			<input type="text" name="task_content" id="task_content" required>
 
-	<form action="function.php" method="post">
-		<label for="new_task">Ajouter une nouvelle tâche</label>
-		<input type="text" name="new_task" id="new_task">
+			<select name="task_status" id="task_status">
+				<?php getStatus($conn); ?>
+			</select>
 
-		<select name="task_status" id="task_status">
-			<option value="todo" selected>À faire</option>
-			<option value="doing">En cours</option>
-			<option value="done">Terminé</option>
-		</select>
+			<input type="checkbox" value="1" name="task_priority" id="task_priority">
+			<label for="task_priority">Priority</label>
 
-		<input type="checkbox" value="1" name="task_priority" id="task_priority">
-		<label for="task_priority">Priority</label>
-
-		<button type="submit">Ajouter</button>
-	</form>
-
+			<button type="submit">Ajouter</button>
+		</form>
+	</main>
 
 </body>
 
