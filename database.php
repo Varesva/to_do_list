@@ -29,7 +29,7 @@ function addTask($db)
 			VALUES (?, ?, ?, CURRENT_TIMESTAMP)";
 
 	/* create a prepared statement */
-	$stmt = mysqli_stmt_init($db);
+	$stmt = mysqli_prepare($db, $sql);
 	// checking connection to db error
 	if (! mysqli_stmt_prepare($stmt, $sql)) {
 		die(mysqli_error($db));
@@ -43,9 +43,10 @@ function addTask($db)
 		$task_status,
 		$task_priority,
 	);
-
 	mysqli_stmt_execute($stmt);
+	mysqli_stmt_close($stmt);
 	mysqli_close($db);
+	echo 'saved in db';
 };
 
 
@@ -53,13 +54,19 @@ function addTask($db)
 function getStatus($db)
 {
 	$sql = "SELECT * from status";
-	$data = mysqli_query($db, $sql);
+	/* create a prepared statement */
+	$stmt = mysqli_prepare($db, $sql);
+	// execute query
+	mysqli_stmt_execute($stmt);
+	// Gets a result set from a prepared statement as a mysqli_result object
+	$result = mysqli_stmt_get_result($stmt);
 
-	if (mysqli_num_rows($data) > 0) {
-		while ($status = mysqli_fetch_assoc($data)) {
+	if (mysqli_num_rows($result) > 0) {
+		while ($status = mysqli_fetch_assoc($result)) {
 			$html = " <option value='%d'>%s</option> ";
 			printf($html, $status["status_id"], $status["name"]);
 		};
 	};
+	mysqli_stmt_close($stmt);
 	mysqli_close($db);
 };
