@@ -1,5 +1,5 @@
 <?php
-// require_once 'function.php';
+require_once 'function.php';
 require_once 'database.php';
 ?>
 <!DOCTYPE html>
@@ -22,7 +22,7 @@ require_once 'database.php';
 				<?php getStatus($conn); ?>
 			</select>
 
-			<input type="hidden" name="task_priority">
+			<input type="hidden" name="task_priority" value="0">
 			<input type="checkbox" value="1" name="task_priority" id="task_priority">
 			<label for="task_priority">Priority</label>
 
