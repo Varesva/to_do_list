@@ -23,7 +23,7 @@ if (mysqli_connect_errno()) {
 };
 
 
-function addTask($db, $task_content, $task_status, $task_priority)
+function addTask(mysqli $db, string $task_content, int $task_status, string $task_priority)
 {
 	$sql = "INSERT INTO task (content, status_id, priority, date)
 			VALUES (?, ?, ?, CURRENT_TIMESTAMP)";
@@ -38,7 +38,7 @@ function addTask($db, $task_content, $task_status, $task_priority)
 	/* bind parameters for markers */
 	mysqli_stmt_bind_param(
 		$stmt,
-		"sii",
+		"sis",
 		$task_content,
 		$task_status,
 		$task_priority,
@@ -46,7 +46,8 @@ function addTask($db, $task_content, $task_status, $task_priority)
 	mysqli_stmt_execute($stmt);
 	mysqli_stmt_close($stmt);
 	mysqli_close($db);
-	echo 'saved in db';
+	// redirect to main page
+	header(header: 'Location: index.php');
 };
 
 
