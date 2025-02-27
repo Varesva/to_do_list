@@ -23,7 +23,7 @@ if (mysqli_connect_errno()) {
 };
 
 
-function addTask($db)
+function addTask($db, $task_content, $task_status, $task_priority)
 {
 	$sql = "INSERT INTO task (content, status_id, priority, date)
 			VALUES (?, ?, ?, CURRENT_TIMESTAMP)";
@@ -50,7 +50,7 @@ function addTask($db)
 };
 
 
-// fetch names of statuses
+/** Fetch names of all status */
 function getStatus($db)
 {
 	$sql = "SELECT * from status";

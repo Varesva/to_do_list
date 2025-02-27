@@ -9,7 +9,7 @@ require_once 'database.php';
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>To Do List</title>
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="./src/style.css">
 </head>
 
 <body>
@@ -18,10 +18,11 @@ require_once 'database.php';
 			<label for="task_content">Ajouter une nouvelle tâche</label>
 			<input type="text" name="task_content" id="task_content" required>
 
-			<select name="task_status" id="task_status">
+			<select name="task_status" id="task_status" required>
 				<?php getStatus($conn); ?>
 			</select>
 
+			<input type="hidden" name="task_priority">
 			<input type="checkbox" value="1" name="task_priority" id="task_priority">
 			<label for="task_priority">Priority</label>
 
