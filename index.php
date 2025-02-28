@@ -10,6 +10,7 @@ require_once 'database.php';
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>To Do List</title>
 	<link rel="stylesheet" href="./src/style.css">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 
 <body>
@@ -19,7 +20,7 @@ require_once 'database.php';
 			<input type="text" name="task_content" id="task_content" required>
 
 			<select name="task_status" id="task_status" required>
-				<?php getStatus($conn); ?>
+				<?php getAllStatus(); ?>
 			</select>
 
 			<input type="hidden" name="task_priority" value="0">
@@ -28,8 +29,16 @@ require_once 'database.php';
 
 			<button type="submit">Ajouter</button>
 		</form>
-	</main>
 
+		<div id="list-task">
+			<div class="card" style="width: 18rem;">
+				<ul class="list-group list-group-flush">
+					<?php getAllTask(); ?>
+				</ul>
+			</div>
+		</div>
+	</main>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 
 </html>

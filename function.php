@@ -9,6 +9,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$task_priority = htmlspecialchars($_POST['task_priority']);
 
 	if (!empty($task_content) && $task_content != " ") {
-		addTask($conn, $task_content, intval($task_status), $task_priority);
+		addTask(
+			$task_content,
+			$task_status,
+			$task_priority
+		);
 	};
 };
